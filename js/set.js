@@ -8,12 +8,10 @@ GitHub：https://github.com/imsyy/home
 /* 自定义配置 */
 /* 尚未完善 */
 $(function () {
-    let url = "http://124.220.47.88:1919/setting.json"
-    const readellr = new FileReader();
+    let url = "../setting.json"
     $.getJSON(
         url,
         function (data) {
-            alert("HERE!")
             /* 页头数据 */
             $('title').remove()
             $('title').text(data.title);
