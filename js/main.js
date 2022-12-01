@@ -107,88 +107,88 @@ fetch('https://v1.hitokoto.cn?max_length=24')
     })
     .catch(console.error)
 
-let times = 0;
-$('#hitokoto').click(function () {
-    if (times == 0) {
-        times = 1;
-        let index = setInterval(function () {
-            times--;
-            if (times == 0) {
-                clearInterval(index);
-            }
-        }, 1000);
-        fetch('https://v1.hitokoto.cn?max_length=24')
-            .then(response => response.json())
-            .then(data => {
-                $('#hitokoto_text').html(data.hitokoto)
-                $('#from_text').html(data.from)
-            })
-            .catch(console.error)
-    } else {
-        iziToast.show({
-            timeout: 1000,
-            icon: "fa-solid fa-circle-exclamation",
-            message: '你点太快了吧'
-        });
-    }
-});
+// let times = 0;
+// $('#hitokoto').click(function () {
+//     if (times == 0) {
+//         times = 1;
+//         let index = setInterval(function () {
+//             times--;
+//             if (times == 0) {
+//                 clearInterval(index);
+//             }
+//         }, 1000);
+//         fetch('https://v1.hitokoto.cn?max_length=24')
+//             .then(response => response.json())
+//             .then(data => {
+//                 $('#hitokoto_text').html(data.hitokoto)
+//                 $('#from_text').html(data.from)
+//             })
+//             .catch(console.error)
+//     } else {
+//         iziToast.show({
+//             timeout: 1000,
+//             icon: "fa-solid fa-circle-exclamation",
+//             message: '你点太快了吧'
+//         });
+//     }
+// });
 
 //获取天气
 //请前往 https://www.mxnzp.com/doc/list 申请 app_id 和 app_secret
 //请前往 https://dev.qweather.com/ 申请 key
-const add_id = "wrknltonr0foslhs"; // app_id
-const app_secret = "Nlh1c0F6d0ZDU2pDR0J3YVBVbkhudz09"; // app_secret
-const key = "433f0c48615a48dfaf2f2b2444297e79" // key
-function getWeather() {
-    fetch("https://www.mxnzp.com/api/ip/self?app_id=" + add_id + "&app_secret=" + app_secret)
-        .then(response => response.json())
-        .then(data => {
-            let str = data.data.city
-            let city = str.replace(/市/g, '')
-            $('#city_text').html(city);
-            fetch("https://geoapi.qweather.com/v2/city/lookup?location=" + city + "&number=1&key=" + key)
-                .then(response => response.json())
-                .then(location => {
-                    let id = location.location[0].id
-                    fetch("https://devapi.qweather.com/v7/weather/now?location=" + id + "&key=" + key)
-                        .then(response => response.json())
-                        .then(weather => {
-                            $('#wea_text').html(weather.now.text)
-                            $('#tem_text').html(weather.now.temp + "°C&nbsp;")
-                            $('#win_text').html(weather.now.windDir)
-                            $('#win_speed').html(weather.now.windScale + "级")
-                        })
-                })
-        })
-        .catch(console.error);
-}
+// const add_id = "wrknltonr0foslhs"; // app_id
+// const app_secret = "Nlh1c0F6d0ZDU2pDR0J3YVBVbkhudz09"; // app_secret
+// const key = "433f0c48615a48dfaf2f2b2444297e79" // key
+// function getWeather() {
+//     fetch("https://www.mxnzp.com/api/ip/self?app_id=" + add_id + "&app_secret=" + app_secret)
+//         .then(response => response.json())
+//         .then(data => {
+//             let str = data.data.city
+//             let city = str.replace(/市/g, '')
+//             $('#city_text').html(city);
+//             fetch("https://geoapi.qweather.com/v2/city/lookup?location=" + city + "&number=1&key=" + key)
+//                 .then(response => response.json())
+//                 .then(location => {
+//                     let id = location.location[0].id
+//                     fetch("https://devapi.qweather.com/v7/weather/now?location=" + id + "&key=" + key)
+//                         .then(response => response.json())
+//                         .then(weather => {
+//                             $('#wea_text').html(weather.now.text)
+//                             $('#tem_text').html(weather.now.temp + "°C&nbsp;")
+//                             $('#win_text').html(weather.now.windDir)
+//                             $('#win_speed').html(weather.now.windScale + "级")
+//                         })
+//                 })
+//         })
+//         .catch(console.error);
+// }
 
-getWeather();
+// getWeather();
 
-let wea = 0;
-$('#upWeather').click(function () {
-    if (wea == 0) {
-        wea = 1;
-        let index = setInterval(function () {
-            wea--;
-            if (wea == 0) {
-                clearInterval(index);
-            }
-        }, 60000);
-        getWeather();
-        iziToast.show({
-            timeout: 2000,
-            icon: "fa-solid fa-cloud-sun",
-            message: '实时天气已更新'
-        });
-    } else {
-        iziToast.show({
-            timeout: 1000,
-            icon: "fa-solid fa-circle-exclamation",
-            message: '请稍后再更新哦'
-        });
-    }
-});
+// let wea = 0;
+// $('#upWeather').click(function () {
+//     if (wea == 0) {
+//         wea = 1;
+//         let index = setInterval(function () {
+//             wea--;
+//             if (wea == 0) {
+//                 clearInterval(index);
+//             }
+//         }, 60000);
+//         getWeather();
+//         iziToast.show({
+//             timeout: 2000,
+//             icon: "fa-solid fa-cloud-sun",
+//             message: '实时天气已更新'
+//         });
+//     } else {
+//         iziToast.show({
+//             timeout: 1000,
+//             icon: "fa-solid fa-circle-exclamation",
+//             message: '请稍后再更新哦'
+//         });
+//     }
+// });
 
 //获取时间
 let t = null;
@@ -296,12 +296,12 @@ $('#switchmore').on('click', function () {
     shoemore = !shoemore;
     if (shoemore && $(document).width() >= 990) {
         $('#container').attr('class', 'container mores');
-        $("#change").html("Oops&nbsp;!");
-        $("#change1").html("哎呀，这都被你发现了（ 再点击一次可关闭 ）");
+        // $("#change").html("Oops&nbsp;!");
+        // $("#change1").html("哎呀，这都被你发现了（ 再点击一次可关闭 ）");
     } else {
         $('#container').attr('class', 'container');
-        $("#change").html("Hello&nbsp;World&nbsp;!");
-        $("#change1").html("一个建立于 21 世纪的小站，存活于互联网的边缘");
+        // $("#change").html("We&nbsp;are&nbsp;still&nbsp;here.");
+        // $("#change1").html("我们登上高塔，看到的却只有黑夜。");
     }
 });
 
