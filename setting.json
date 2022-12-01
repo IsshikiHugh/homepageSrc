@@ -1,0 +1,20 @@
+{
+    "title": "Isshiki修 の 主页",
+    "description": "我们登上高塔，看到的却只有黑夜。",
+    "keywords": "Isshiki修,个人主页",
+    "author": "Isshiki修",
+    "logo_img": "./img/icon/logo.png",
+    "logo_text_1": "isshikih",
+    "logo_text_2": "top",
+    "github": "IsshikiHugh",
+    "qq": "2511524185",
+    "email": "2511524185@qq.com",
+    "bilibili": "94875521",
+    "telegram": "TowerNight",
+    "link_1": [
+        "https://note.isshikih.top/",
+        "fa-solid fa-blog",
+        "笔记"
+    ],
+    "Copyright_text": "Isshiki修"
+}
